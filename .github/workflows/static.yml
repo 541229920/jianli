@@ -1,26 +1,26 @@
-# 部署 Vite + React 静态网站到 GitHub Pages
+
 name: Deploy Vite React App to Pages
 
 on:
-  # 推送到 main 分支时触发
+
   push:
     branches: ["main"]
-  # 允许手动触发
+
   workflow_dispatch:
 
-# 设置 GITHUB_TOKEN 权限
+
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 只允许一个并发部署
+
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # 构建和部署任务
+
   build-and-deploy:
     environment:
       name: github-pages
@@ -49,7 +49,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # 上传构建后的 dist 文件夹
+
           path: './dist'
           
       - name: Deploy to GitHub Pages
